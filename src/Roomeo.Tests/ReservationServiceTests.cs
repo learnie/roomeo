@@ -16,8 +16,10 @@ namespace Roomeo.Tests
 
                 service.Create(new Reservation("Title",
                     "Ked",
-                    new DateTime(2021,1,1), 
-                    new DateTime(2021,1,2)));
+                    new Schedule(
+                        new DateTime(2021,1,1), 
+                        new DateTime(2021,1,2))
+                    ));
 
                 repository
                     .Verify(r => r.Insert(It.IsAny<Reservation>()), Times.Once());

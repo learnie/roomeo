@@ -19,8 +19,10 @@ namespace Roomeo.Tests
                     new Reservation(
                         request.Title,
                         request.Organizer,
-                        request.StartDate,
-                        request.EndDate
+                        new Schedule(
+                            request.StartDate,
+                            request.EndDate
+                        )
                     ));
             }
             catch
