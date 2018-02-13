@@ -15,4 +15,9 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Roomeo.Api\Roomeo.Api.csproj" />
+    <ProjectReference Include="..\..\src\Roomeo.Core\Roomeo.Core.csproj" />
+  </ItemGroup>
+
 </Project>

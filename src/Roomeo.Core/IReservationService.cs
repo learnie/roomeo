@@ -1,4 +1,4 @@
-namespace Roomeo.Tests
+namespace Roomeo.Core
 {
     public interface IReservationService
     {

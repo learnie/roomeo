@@ -1,8 +1,10 @@
 using System;
+using Microsoft.AspNetCore.Mvc;
+using Roomeo.Core;
 
-namespace Roomeo.Tests
+namespace Roomeo.Api.Controllers
 {
-    public class ReservationsController
+    public class ReservationsController : Controller
     {
         private readonly IReservationService _service;
 
@@ -11,7 +13,7 @@ namespace Roomeo.Tests
             _service = service ?? throw new ArgumentNullException(nameof(service));
         }
 
-        public string Create(CreateReservationRequest request)
+        public IActionResult Create(CreateReservationRequest request)
         {
             try
             {
@@ -28,9 +30,10 @@ namespace Roomeo.Tests
             }
             catch
             {
-                return "500";
+                return StatusCode(500);
             }
-            return "200";
+
+            return Ok();
         }
     }
 

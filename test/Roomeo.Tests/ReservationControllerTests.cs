@@ -1,6 +1,10 @@
 using System;
 using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Roomeo.Api;
+using Roomeo.Api.Controllers;
+using Roomeo.Core;
 using Xunit;
 
 namespace Roomeo.Tests
@@ -23,11 +27,12 @@ namespace Roomeo.Tests
                     EndDate = new DateTime(2021, 1, 2)
                 };
 
-                var result = controller.Create(request);
+                var result = controller.Create(request) as StatusCodeResult;
 
                 result
+                    .StatusCode
                     .Should()
-                    .Be("200");
+                    .Be(200);
             }
 
             [Fact]
@@ -42,11 +47,12 @@ namespace Roomeo.Tests
                 var controller = new ReservationsController(service.Object);
                 var request = new CreateReservationRequest();
 
-                var result = controller.Create(request);
+                var result = controller.Create(request) as StatusCodeResult;
 
                 result
+                    .StatusCode
                     .Should()
-                    .Be("500");
+                    .Be(500);
             }
         }
     }

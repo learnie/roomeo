@@ -2,6 +2,7 @@ using System;
 using FluentAssertions;
 using Xunit;
 using System.Linq;
+using Roomeo.Core;
 
 namespace Roomeo.Tests
 {

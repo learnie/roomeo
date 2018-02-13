@@ -1,5 +1,6 @@
 using System;
 using FluentAssertions;
+using Roomeo.Core;
 using Xunit;
 
 namespace Roomeo.Tests
@@ -32,8 +33,10 @@ namespace Roomeo.Tests
             }
         }
 
+        //TODO: MOOOOOR TESTS!!!
         public class IsOverlap_Should
         {
+            //Convert to theory
             [Fact]
             public void ReturnFalse()
             {
@@ -45,6 +48,7 @@ namespace Roomeo.Tests
                     .BeFalse();
             }
             
+            //Convert to theory
             [Fact]
             public void ReturnTrue()
             {

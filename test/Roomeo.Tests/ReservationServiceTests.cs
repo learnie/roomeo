@@ -1,6 +1,7 @@
 using System;
 using Moq;
 using FluentAssertions;
+using Roomeo.Core;
 using Xunit;
 
 namespace Roomeo.Tests

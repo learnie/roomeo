@@ -1,6 +1,6 @@
 using System;
 
-namespace Roomeo.Tests
+namespace Roomeo.Core
 {
     public interface IReservationRepository
     {
