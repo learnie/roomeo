@@ -15,7 +15,13 @@ namespace Roomeo.Tests
         {
             try
             {
-                _service.Create(new Reservation());
+                _service.Create(
+                    new Reservation(
+                        request.Title,
+                        request.Organizer,
+                        request.StartDate,
+                        request.EndDate
+                    ));
             }
             catch
             {
