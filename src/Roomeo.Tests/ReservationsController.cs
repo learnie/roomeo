@@ -2,11 +2,11 @@ using System;
 
 namespace Roomeo.Tests
 {
-    public class RoomsController
+    public class ReservationsController
     {
         private readonly IReservationService _service;
 
-        public RoomsController(IReservationService service)
+        public ReservationsController(IReservationService service)
         {
             _service = service ?? throw new ArgumentNullException(nameof(service));
         }
@@ -19,6 +19,7 @@ namespace Roomeo.Tests
                     new Reservation(
                         request.Title,
                         request.Organizer,
+                        new Room(),
                         new Schedule(
                             request.StartDate,
                             request.EndDate

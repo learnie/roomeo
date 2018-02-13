@@ -14,6 +14,7 @@ namespace Roomeo.Tests
                 var reservation = new Reservation(
                     "Title",
                     "Ked",
+                    new Room(),
                     new Schedule(
                         new DateTime(2021,1,1), 
                         new DateTime(2021,1,2)
@@ -24,7 +25,13 @@ namespace Roomeo.Tests
                 reservation.Schedule.Should().Be(new Schedule(
                     new DateTime(2021,1,1), 
                     new DateTime(2021,1,2)));
+                reservation.Room.Id.Should().Be(Guid.Empty);
             }
         }
+    }
+
+    public class Room
+    {
+        public Guid Id { get; internal set; }
     }
 }

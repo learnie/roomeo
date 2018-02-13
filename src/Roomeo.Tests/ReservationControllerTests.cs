@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Roomeo.Tests
 {
-    public class RoomsControllerTests
+    public class ReservationControllerTests
     {
         public class Create_Should
         {
@@ -14,8 +14,14 @@ namespace Roomeo.Tests
             {
                 var service = new Mock<IReservationService>();
 
-                var controller = new RoomsController(service.Object);
-                var request = new CreateReservationRequest();
+                var controller = new ReservationsController(service.Object);
+                var request = new CreateReservationRequest()
+                {
+                    Title = "Title",
+                    Organizer = "Ked",
+                    StartDate = new DateTime(2021, 1, 1),
+                    EndDate = new DateTime(2021, 1, 2)
+                };
 
                 var result = controller.Create(request);
 
@@ -33,7 +39,7 @@ namespace Roomeo.Tests
                     .Setup(s => s.Create(It.IsAny<Reservation>()))
                     .Throws(new Exception());
 
-                var controller = new RoomsController(service.Object);
+                var controller = new ReservationsController(service.Object);
                 var request = new CreateReservationRequest();
 
                 var result = controller.Create(request);
