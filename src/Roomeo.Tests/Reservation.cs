@@ -21,7 +21,19 @@ namespace Roomeo.Tests
 
             Title = title;
             Organizer = organizer;
+
+            // TODO: Add Test
+            if (room == null)
+            {
+                throw new ArgumentNullException(nameof(room));
+            }
+
+            if (!room.Active)
+            {
+                throw new ArgumentException(nameof(room), $"{nameof(room)} should be active!");
+            }
             Room = room;
+
             Schedule = schedule;
         }
 

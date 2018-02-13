@@ -13,7 +13,7 @@ namespace Roomeo.Tests
         }
 
         public Guid Id { get; }
-        public bool Active { get; }
+        public bool Active { get; set; }
         public string Name { get; }
         public string Floor { get; }
     }

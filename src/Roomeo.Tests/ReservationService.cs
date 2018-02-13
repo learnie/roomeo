@@ -1,3 +1,5 @@
+using System;
+
 namespace Roomeo.Tests
 {
 
@@ -12,6 +14,14 @@ namespace Roomeo.Tests
 
         public void Create(Reservation reservation)
         {
+            var reservations =
+                _repository.GetByRoomAndSchedule(reservation.Room.Id, reservation.Schedule);
+            
+            if (reservations.HasConflict(reservation))
+            {
+                throw new InvalidOperationException();
+            }
+
             _repository.Insert(reservation);
         }
     }

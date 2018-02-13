@@ -7,7 +7,7 @@ namespace Roomeo.Tests
 
         public Schedule(DateTime begin, DateTime end)
         {
-            if (begin > end) 
+            if (begin > end)
             {
                 throw new ArgumentOutOfRangeException(nameof(begin));
             }
@@ -37,13 +37,19 @@ namespace Roomeo.Tests
             return this.Equals(obj as Schedule);
         }
 
+        public bool IsOverlap(Schedule schedule)
+        {
+            return 
+                Begin < schedule.End && schedule.Begin < End;
+        }
+
         public bool Equals(Schedule other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
-            return 
-                Begin.Equals(other.Begin) && 
+            return
+                Begin.Equals(other.Begin) &&
                 End.Equals(other.End);
         }
 
