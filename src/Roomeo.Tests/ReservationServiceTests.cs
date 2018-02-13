@@ -16,7 +16,7 @@ namespace Roomeo.Tests
 
                 service.Create(new Reservation("Title",
                     "Ked",
-                    new Room(),
+                    new Room(Guid.NewGuid(), "Pahiyas", "16"),
                     new Schedule(
                         new DateTime(2021,1,1), 
                         new DateTime(2021,1,2))

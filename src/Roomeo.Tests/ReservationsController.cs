@@ -19,7 +19,7 @@ namespace Roomeo.Tests
                     new Reservation(
                         request.Title,
                         request.Organizer,
-                        new Room(),
+                        new Room(Guid.NewGuid() ,"Pahiyas", "16"),
                         new Schedule(
                             request.StartDate,
                             request.EndDate
