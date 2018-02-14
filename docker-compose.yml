@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  roomeo.api:
+    image: roomeo.api
+    build:
+      context: .
+      dockerfile: src/Roomeo.Api/Dockerfile
