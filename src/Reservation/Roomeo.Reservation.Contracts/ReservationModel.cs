@@ -2,7 +2,9 @@
 
 namespace Roomeo.Reservation.Contracts
 {
-    public class Reservation
+    public class ReservationModel
     {
+        public int Id { get; set; }
     }
 }
+  

@@ -20,16 +20,15 @@ namespace Roomeo.Reservation.Api.Controllers
 
         // GET api/reservations
         [HttpGet]
-        public ActionResult<IEnumerable<Contracts.Reservation>> Get([FromQuery]DateTime date, [FromQuery]int roomId)
+        public ActionResult<IEnumerable<Contracts.ReservationModel>> Get([FromQuery]DateTime date, [FromQuery]int roomId)
         {
-            System.Console.WriteLine(date);
-            System.Console.WriteLine($"Room ID: {roomId}");
-            return new List<Contracts.Reservation>();
+            IEnumerable<Reservation> reservation = _service.GetAll(date, roomId);
+            return Ok(reservation.Select(r => new ReservationModel() { Id = r.Id }));
         }
 
         // POST api/reservations
         [HttpPost]
-        public IActionResult Make([FromBody]Contracts.Reservation reservation)
+        public IActionResult Make([FromBody]Contracts.ReservationModel reservation)
         {
             return Ok();
         }
