@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 
 namespace Roomeo.Reservation
 {
-    public class ReservationService
+    public class ReservationService : IReservationService
     {
         private readonly IReservationRepository _repository;
 
@@ -19,6 +20,11 @@ namespace Roomeo.Reservation
             }
             
             _repository.Delete(roomId);
+        }
+
+        public IEnumerable<Reservation> GetAll(DateTime date, int roomId)
+        {
+            return _repository.GetAll(date, roomId);
         }
     }
 }
