@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using Moq;
 using FluentAssertions;
+using System.Collections.Generic;
 
 namespace Roomeo.Reservation.Tests
 {
@@ -35,6 +36,22 @@ namespace Roomeo.Reservation.Tests
                 Action sut = () => service.Cancel(123);
 
                 sut.Should().Throw<InvalidOperationException>();
+            }
+        }
+
+        public class GetAllMethod_Should
+        {
+            [Fact]
+            public void ReturnAllReservations()
+            {
+                var repo = new Mock<IReservationRepository>();
+                repo
+                    .Setup(r => r.GetAll(It.IsAny<DateTime>(), 123))
+                    .Returns(new List<Reservation>() { new Reservation(new Employee("John Doe"), new Room("Pahiyas"), new Schedule(new DateTime(2018, 1, 1), new DateTime(2018, 1, 2))) });
+
+                var service = new ReservationService(repo.Object);
+                var sut = service.GetAll(DateTime.Now, 123);
+                sut.Should().HaveCount(1);
             }
         }
     }
